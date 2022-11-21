@@ -24,13 +24,13 @@ type Docs struct {
 
 var olibUrl = "https://openlibrary.org"
 
-// var searchByWhat = "author"
+// var param = "author"
 // var value = "carl sagan"
 // var page = 2
 
 // Agar GET request-nya ditentukan secara dinamis (nnti oleh frontend)
-func dynamicUrl(searchByWhat string, value string, page int) string {
-	switch searchByWhat {
+func dynamicUrl(param string, value string, page int) string {
+	switch param {
 	// Search by Title
 	case "title":
 		if page > 0 {
