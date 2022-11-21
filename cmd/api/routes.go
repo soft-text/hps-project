@@ -31,7 +31,7 @@ func (app *application) routes() http.Handler {
 
 	router.HandlerFunc(http.MethodPost, "/v1/signin", app.Signin)
 
-	router.HandlerFunc(http.MethodGet, "/v1/get_book", app.getBook)
+	router.HandlerFunc(http.MethodGet, "/v1/get_book", app.fetchBook)
 	router.HandlerFunc(http.MethodGet, "/v1/movie/:id", app.getOneMovie)
 	router.HandlerFunc(http.MethodGet, "/v1/movies", app.getAllMovies)
 	router.HandlerFunc(http.MethodGet, "/v1/movies/:genre_id", app.getAllMoviesByGenre)

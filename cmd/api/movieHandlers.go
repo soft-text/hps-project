@@ -25,6 +25,7 @@ func (app *application) getOneMovie(w http.ResponseWriter, r *http.Request) {
 	params := httprouter.ParamsFromContext(r.Context())
 
 	// assign it by its key (id)
+	// strconv.Atoi -> change string to integer
 	id, err := strconv.Atoi(params.ByName("id"))
 	if err != nil {
 		app.logger.Print(errors.New("invalid id parameter"))
@@ -121,25 +122,6 @@ func (app *application) deleteMovie(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
-
-/*
-func (app *application) getBook(w http.ResponseWriter, r *http.Request) {
-	// First, figure out what's the value of /:id is
-	params := httprouter.ParamsFromContext(r.Context())
-
-	// assign it by its key (id)
-	id, err := strconv.Atoi(params.ByName("id"))
-	if err != nil {
-		app.logger.Print(errors.New("invalid id parameter"))
-		app.errorJSON(w, err)
-		return // this value of return is never used
-	}
-	err := app.writeJSON(w, http.StatusOK, genres, "id")
-	if err != nil {
-		app.errorJSON(w, err)
-		return
-	}
-} */
 
 type MoviePayload struct {
 	ID          string `json:"id"`

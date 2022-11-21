@@ -44,9 +44,9 @@ func main() {
 	var cfg config
 
 	// Everytime we start the application we'll be reading following variables
-	// All flag variables below are command line argument
+	// All flag-variables below are command line argument
 	// Meaning that when we run "go run main.go"
-	// it will run              "go run main.go -port=4000 -env=development -dsn=postgres... -jwt-secret=2dce..."
+	// by default it will run   "go run main.go -port=4000 -env=development -dsn=postgres... -jwt-secret=2dce..."
 	// In other words flag helps us to set configuration of our application
 
 	flag.IntVar(&cfg.port, "port", 4000, "Server port to listen on") // (Will be stored in config in member port, that called port, with default value 4000, and description)
