@@ -22,16 +22,18 @@ func (app *application) wrap(next http.Handler) httprouter.Handle {
 
 func (app *application) routes() http.Handler {
 	router := httprouter.New()
+	//r := gin.Default()
 	secure := alice.New(app.checkToken) // you can put as many pieces of middleware into this variable "secure"
 
 	router.HandlerFunc(http.MethodGet, "/status", app.statusHandler)
+	//r.GET("/status", app.statusHandler)
 
 	// Setup route to moviesGraphQL handler that will take care of GraphQL request
 	router.HandlerFunc(http.MethodPost, "/v1/graphql", app.moviesGraphQL)
 
 	router.HandlerFunc(http.MethodPost, "/v1/signin", app.Signin)
 
-	router.HandlerFunc(http.MethodGet, "/v1/get_book", app.fetchBook)
+	//router.HandlerFunc(http.MethodGet, "/v1/get_book", app.fetchBook)
 	router.HandlerFunc(http.MethodGet, "/v1/movie/:id", app.getOneMovie)
 	router.HandlerFunc(http.MethodGet, "/v1/movies", app.getAllMovies)
 	router.HandlerFunc(http.MethodGet, "/v1/movies/:genre_id", app.getAllMoviesByGenre)
